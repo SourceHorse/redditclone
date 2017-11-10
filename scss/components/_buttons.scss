@@ -1,8 +1,8 @@
 // !compileOnSave
 // compileOnSave: false
 .upvote {
-  color: blue;
+  @include votebutton(black);
 }
 .downvote {
-  color: orange;
+  @include votebutton(black);
 }
