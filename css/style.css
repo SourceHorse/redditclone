@@ -1,0 +1,11 @@
+.upvote {
+  color: blue;
+}
+
+.downvote {
+  color: orange;
+}
+
+body {
+  margin: 0;
+}

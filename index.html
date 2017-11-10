@@ -1,13 +1,21 @@
 <html>
   <head>
     <title>Purpledit</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="app.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
   </head>
   <body ng-app="flapperNews" ng-controller="MainCtrl">
     <div ng-repeat="post in posts | orderBy: '-upvotes'">
+      <span ng-click="incrementUpvotes(post)"><i class="fa fa-arrow-circle-up upvote" aria-hidden="true"></i></span>
+      <span ng-click="incrementDownvotes(post)"><i class="fa fa-arrow-circle-down downvote" aria-hidden="true"></i></span>
       {{post.title}} - upvotes: {{post.upvotes}}
     </div>
+    <i class="fa fa-arrow-circle-up upvote" aria-hidden="true"></i>
+    <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
     <form ng-submit="addPost()">
       <input type="text" ng-model="title"></input>
       <button type="submit">Post</button>
