@@ -1,0 +1,12 @@
+// !compileOnSave
+// compileOnSave: false
+
+@mixin votebutton($color) {
+  transition: $transition-time;
+  cursor: pointer;
+  color: $color;
+  &:hover {
+    transition: $transition-time;
+    color: $color + #888;
+  }
+}

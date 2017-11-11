@@ -1,0 +1,8 @@
+// !compileOnSave
+// compileOnSave: false
+.upvote {
+  @include votebutton(black);
+}
+.downvote {
+  @include votebutton(black);
+}
