@@ -100,11 +100,12 @@ app.controller('MainCtrl', [
 
     app.controller('PostsCtrl', [
       '$scope',
-      '$stateParams',
+      // '$stateParams',
       'posts',
       'post',
       function($scope, posts, post) {
         $scope.post = post;
+
         $scope.addComment = function(){
           if($scope.body === '') { return; }
           posts.addComment(post._id, {
