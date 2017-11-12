@@ -59,7 +59,7 @@ app.config([
       post.upvotes += 1;
     });
 };
-// DOWNVOTE FUNCTION
+
 o.downvote = function(post) {
 return $http.put('/posts/' + post._id + '/downvote')
   .success(function(data){
@@ -69,6 +69,20 @@ return $http.put('/posts/' + post._id + '/downvote')
 
 o.addComment = function(id, comment) {
   return $http.post('/posts/' + id + '/comments', comment);
+};
+
+o.upvoteComment = function(post, comment) {
+  return $http.put('/posts/' + post._id + '/comments/'+ comment._id + '/upvote')
+    .success(function(data){
+      comment.upvotes += 1;
+    });
+};
+
+o.downvoteComment = function(post, comment) {
+  return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/downvote')
+    .success(function(data){
+      comment.upvotes -= 1;
+    });
 };
   return o;
 }])
@@ -100,7 +114,6 @@ app.controller('MainCtrl', [
 
     app.controller('PostsCtrl', [
       '$scope',
-      // '$stateParams',
       'posts',
       'post',
       function($scope, posts, post) {
@@ -115,5 +128,12 @@ app.controller('MainCtrl', [
             $scope.post.comments.push(comment);
           });
           $scope.body = '';
+        };
+        $scope.incrementUpvotes = function(comment){
+          posts.upvoteComment(post, comment);
+        };
+        //DOWNVOTE COMMENT FUNCTION
+        $scope.incrementDownvotes = function(comment){
+          posts.downvoteComment(post, comment);
         };
       }]);
